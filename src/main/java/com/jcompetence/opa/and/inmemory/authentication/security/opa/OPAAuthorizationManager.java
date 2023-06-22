@@ -45,7 +45,7 @@ public class OPAAuthorizationManager implements AuthorizationManager<RequestAuth
 
         OPADataResponse opaDataResponse = opaClient.authorizedToAccessAPI(new OPADataRequest(input));
 
-        return Stream.of(opaDataResponse).map(response -> new AuthorizationDecision(response.getResult().getAllow())).findFirst().get();
+        return new AuthorizationDecision(opaDataResponse.getResult().getAllow());
     }
 
 }
